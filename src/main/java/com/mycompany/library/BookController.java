@@ -32,6 +32,14 @@ public class BookController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("✅ Controller inicializado com GSON");
+            coverImage.setFitWidth(240);   // largura ideal do card
+            coverImage.setFitHeight(320);  // altura ideal proporcional (retângulo de livro)
+
+            coverImage.setPreserveRatio(true);
+            coverImage.setSmooth(true);
+
+            // opcional: uma cor de fundo clara para indicar o card vazio
+            coverImage.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #DDD; -fx-border-radius: 6;");
     }
 
     @FXML
@@ -104,7 +112,7 @@ public class BookController implements Initializable {
             
             // Extrai os dados de forma SIMPLES com GSON
             String titulo = volumeInfo.has("title") ? 
-                volumeInfo.get("title").getAsString() : "Título não disponível";
+                volumeInfo.get("title").getAsString() : "Title not found";
             
             String autor = "Autor desconhecido";
             if (volumeInfo.has("authors")) {
@@ -113,10 +121,10 @@ public class BookController implements Initializable {
             }
             
             String descricao = volumeInfo.has("description") ? 
-                volumeInfo.get("description").getAsString() : "Descrição não disponível";
+                volumeInfo.get("description").getAsString() : "Title not found";
             
             String dataPublicacao = volumeInfo.has("publishedDate") ? 
-                volumeInfo.get("publishedDate").getAsString() : "Data não informada";
+                volumeInfo.get("publishedDate").getAsString() : "Published Date not found";
             
             String capaUrl = "";
             if (volumeInfo.has("imageLinks")) {
@@ -124,8 +132,6 @@ public class BookController implements Initializable {
                 capaUrl = imageLinks.has("thumbnail") ? 
                     imageLinks.get("thumbnail").getAsString().replace("\\/", "/") : "";
             }
-            
-            System.out.println("📊 GSON - Livro encontrado: " + titulo);
             
             return new Book(titulo, autor, descricao, capaUrl, dataPublicacao, "", "");
             
@@ -138,16 +144,16 @@ public class BookController implements Initializable {
 
     private void preencherDados(Book livro) {
         // Preenche os dados formatados
-        title.setText("Título: " + livro.getTitle());
-        author.setText("Autor: " + livro.getAuthor());
-        published.setText("Publicado: " + livro.getPublishedDate());
+        title.setText("Title: " + livro.getTitle());
+        author.setText("Author: " + livro.getAuthor());
+        published.setText("Published Date: " + livro.getPublishedDate());
 
         // Preenche a descrição no TextFlow
         String descricao = livro.getDescription();
-        if (descricao.length() > 300) {
-            descricao = descricao.substring(0, 300) + "...";
-        }
-        description.getChildren().setAll(new Text("Descrição: " + descricao));
+//        if (descricao.length() > 300) {
+//            descricao = descricao.substring(0, 300) + "...";
+//        }
+        description.getChildren().setAll(new Text("Description: " + descricao));
 
         // Carrega a imagem
         if (!livro.getThumbnail().isEmpty()) {
