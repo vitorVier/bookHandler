@@ -2,9 +2,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
-         
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
     <artifactId>library</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -49,7 +48,7 @@
                 </configuration>
             </plugin>
 
-            <!-- JavaFX Plugin moderno -->
+            <!-- JavaFX plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -59,33 +58,19 @@
                 </configuration>
             </plugin>
 
-            <!-- Assembly JAR (opcional) -->
+            <!-- JPACKAGE (gera EXE funcional) -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.4.2</version>
+                <groupId>com.github.akman</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.5.0</version>
                 <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.mycompany.library.App</mainClass>
-                        </manifest>
-                    </archive>
+                    <appName>Library</appName>
+                    <mainClass>com.mycompany.library.App</mainClass>
+                    <runtimeImageOutput>${project.build.directory}/runtime</runtimeImageOutput>
+                    <installerType>exe</installerType>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
     </build>
-
 </project>
