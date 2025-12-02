@@ -3,10 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
@@ -20,71 +20,51 @@
 
     <!-- TOPO -->
     <top>
-        <FlowPane alignment="CENTER" prefHeight="60" />
+        <FlowPane alignment="CENTER" prefHeight="40" />
     </top>
 
-    <!-- CENTRO DO LAYOUT -->
+    <!-- CENTRO ENVOLVIDO EM SCROLLPANE (RESPONSIVO) -->
     <center>
-        <VBox alignment="CENTER" spacing="25">
-
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-
-            <!-- TÍTULO PRINCIPAL -->
-            <Label id="mainTitle" text="Virtual Library" alignment="CENTER" textAlignment="CENTER">
-                <font>
-                    <Font name="Segoe UI Black" size="40" />
-                </font>
-            </Label>
-
-            <!-- CARTÃO/CONTAINER DO LIVRO -->
-            <VBox id="bookCard" alignment="CENTER" spacing="18" maxWidth="950">
-
-                <Label fx:id="title" id="title" alignment="CENTER" wrapText="true" text="Title">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="24" />
-                    </font>
-                </Label>
-
-                <!-- CAPA DO LIVRO -->
-                <FlowPane alignment="CENTER">
-                    <ImageView fx:id="coverImage" fitHeight="300" fitWidth="240"
-                               preserveRatio="true" smooth="true" />
-                </FlowPane>
-
-                <Label fx:id="author" id="author" alignment="CENTER" text="Author:">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="15" />
-                    </font>
-                </Label>
-
-                <Label fx:id="published" id="published" alignment="CENTER" text="Published Date:">
-                    <font>
-                        <Font name="Segoe UI" size="13" />
-                    </font>
-                </Label>
-
-                <TextFlow fx:id="description" id="description" prefWidth="850" textAlignment="JUSTIFY">
+        <ScrollPane fitToWidth="true" pannable="true" hbarPolicy="NEVER">
+            <content>
+                <VBox alignment="CENTER" spacing="25">
                     <padding>
-                        <Insets top="10" right="5" bottom="10" left="5"/>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
                     </padding>
-                </TextFlow>
-            </VBox>
 
-            <!-- BOTÃO -->
-            <Button fx:id="button" id="button" text="Draw a book" onAction="#handleGenerateBook"
-                    prefHeight="40" prefWidth="150">
-                <font>
-                    <Font name="Segoe UI Semibold" size="16" />
-                </font>
-            </Button>
-        </VBox>
+                    <!-- TÍTULO PRINCIPAL -->
+                    <Label id="mainTitle" text="Virtual Library">
+                        <font>
+                            <Font name="Segoe UI Black" size="40" />
+                        </font>
+                    </Label>
+
+                    <!-- CARTÃO DO LIVRO -->
+                    <VBox id="bookCard" alignment="CENTER" spacing="15" maxWidth="900">
+
+                        <Label fx:id="title" id="title" wrapText="true" text="Title" />
+
+                        <FlowPane alignment="CENTER">
+                            <ImageView fx:id="coverImage" fitHeight="300" fitWidth="240"
+                                       preserveRatio="true" smooth="true" />
+                        </FlowPane>
+
+                        <Label fx:id="author" id="author" text="Author:" />
+                        <Label fx:id="published" id="published" text="Published Date:" />
+
+                        <TextFlow fx:id="description" id="description" prefWidth="850" textAlignment="JUSTIFY">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+                        </TextFlow>
+                    </VBox>
+
+                    <!-- BOTÃO -->
+                    <Button fx:id="button" id="button" text="Draw a book" onAction="#handleGenerateBook"
+                            prefHeight="40" prefWidth="150" />
+                </VBox>
+            </content>
+        </ScrollPane>
     </center>
-
-    <!-- RODAPÉ -->
-    <bottom>
-        <FlowPane alignment="CENTER" prefHeight="50" />
-    </bottom>
 
 </BorderPane>
