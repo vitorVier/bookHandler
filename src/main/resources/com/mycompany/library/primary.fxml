@@ -7,96 +7,84 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1291.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.library.BookController">
-   <children>
-      <BorderPane layoutX="1.0" prefHeight="849.0" prefWidth="1273.0" style="-fx-background-color: #F4F4F4;">
-         <top>
-            <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="79.0" prefWidth="1274.0" BorderPane.alignment="CENTER" />
-         </top>
-         <center>
-            <VBox alignment="CENTER" prefHeight="648.0" prefWidth="1274.0" style="-fx-background-color: #F4F4F4;" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <FlowPane alignment="CENTER" prefHeight="86.0" prefWidth="1273.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="1271.0" text="Library" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Segoe UI Black" size="36.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </FlowPane>
-                     </children>
-                  </HBox>
-                  <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="361.0" prefWidth="1274.0">
-                           <children>
-                              <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1274.0" text="Title">
-                                 <font>
-                                    <Font name="Segoe UI Semibold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="318.0" prefWidth="265.0" style="-fx-background-color: #FFF;">
-                                       <children>
-                                          <ImageView fx:id="coverImage" fitHeight="296.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" smooth="true" />
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets bottom="15.0" top="15.0" />
-                                       </HBox.margin>
-                                    </FlowPane>
-                                 </children>
-                              </HBox>
-                              <Label fx:id="author" alignment="CENTER" prefHeight="17.0" prefWidth="1274.0" text="Author:">
-                                 <font>
-                                    <Font name="Segoe UI Semibold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="published" alignment="CENTER" prefHeight="15.0" prefWidth="376.0" text="Published Date:">
-                                 <font>
-                                    <Font name="Segoe UI" size="12.0" />
-                                 </font>
-                              </Label>
-                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <!-- CORREÇÃO: TextFlow para description -->
-                                    <TextFlow fx:id="description" prefHeight="0.0" prefWidth="1018.0" textAlignment="JUSTIFY" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" top="15.0" />
-                                 </VBox.margin>
-                              </FlowPane>
-                           </children>
-                        </VBox>
-                     </children>
-                  </FlowPane>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1274.0">
-                     <children>
-                        <FlowPane alignment="CENTER" prefHeight="72.0" prefWidth="1273.0">
-                           <children>
-                              <Button fx:id="button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleGenerateBook" prefHeight="30.0" prefWidth="136.0" style="-fx-background-color: #28A745; -fx-cursor: hand;" text="Draw a book" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Segoe UI Semibold" size="14.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </FlowPane>
-                     </children>
-                  </HBox>
-               </children>
+<BorderPane stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.library.BookController"
+            prefWidth="1291" prefHeight="868"
+            id="root">
+
+    <!-- TOPO -->
+    <top>
+        <FlowPane alignment="CENTER" prefHeight="60" />
+    </top>
+
+    <!-- CENTRO DO LAYOUT -->
+    <center>
+        <VBox alignment="CENTER" spacing="25">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- TÍTULO PRINCIPAL -->
+            <Label id="mainTitle" text="Virtual Library" alignment="CENTER" textAlignment="CENTER">
+                <font>
+                    <Font name="Segoe UI Black" size="40" />
+                </font>
+            </Label>
+
+            <!-- CARTÃO/CONTAINER DO LIVRO -->
+            <VBox id="bookCard" alignment="CENTER" spacing="18" maxWidth="950">
+
+                <Label fx:id="title" id="title" alignment="CENTER" wrapText="true" text="Title">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="24" />
+                    </font>
+                </Label>
+
+                <!-- CAPA DO LIVRO -->
+                <FlowPane alignment="CENTER">
+                    <ImageView fx:id="coverImage" fitHeight="300" fitWidth="240"
+                               preserveRatio="true" smooth="true" />
+                </FlowPane>
+
+                <Label fx:id="author" id="author" alignment="CENTER" text="Author:">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="15" />
+                    </font>
+                </Label>
+
+                <Label fx:id="published" id="published" alignment="CENTER" text="Published Date:">
+                    <font>
+                        <Font name="Segoe UI" size="13" />
+                    </font>
+                </Label>
+
+                <TextFlow fx:id="description" id="description" prefWidth="850" textAlignment="JUSTIFY">
+                    <padding>
+                        <Insets top="10" right="5" bottom="10" left="5"/>
+                    </padding>
+                </TextFlow>
             </VBox>
-         </center>
-         <bottom>
-            <FlowPane blendMode="LIGHTEN" prefHeight="79.0" prefWidth="1274.0" BorderPane.alignment="CENTER" />
-         </bottom>
-      </BorderPane>
-   </children>
-</Pane>
+
+            <!-- BOTÃO -->
+            <Button fx:id="button" id="button" text="Draw a book" onAction="#handleGenerateBook"
+                    prefHeight="40" prefWidth="150">
+                <font>
+                    <Font name="Segoe UI Semibold" size="16" />
+                </font>
+            </Button>
+        </VBox>
+    </center>
+
+    <!-- RODAPÉ -->
+    <bottom>
+        <FlowPane alignment="CENTER" prefHeight="50" />
+    </bottom>
+
+</BorderPane>

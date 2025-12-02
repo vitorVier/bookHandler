@@ -1,34 +1,70 @@
-VBox, HBox, FlowPane, BorderPane {
-    -fx-max-width: infinity;
-    -fx-max-height: infinity;
+/* --- FUNDO PRINCIPAL --- */
+#root {
+    -fx-background-color: linear-gradient(to bottom, #faf7f1, #f1ece4);
+    -fx-font-family: "Segoe UI";
 }
 
-FlowPane {
-    -fx-hgap: 10;
-    -fx-vgap: 10;
-    -fx-alignment: center;
+/* --- TÍTULO PRINCIPAL --- */
+#mainTitle {
+    -fx-font-size: 42px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #4b3926;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);
 }
 
-#coverImage {
-    -fx-preserve-ratio: true;
-    -fx-smooth: true;
-    
-    -fx-fit-width: 28vw;
-    -fx-fit-height: 60vh;
+/* --- CARTÃO DO LIVRO --- */
+#bookCard {
+    -fx-background-color: #ffffff;
+    -fx-padding: 25;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-border-color: #e2d7c5;
+    -fx-border-width: 1.5;
+
+    /* Sombra suave */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.22), 20, 0, 0, 6);
 }
 
-.cover-card {
-    -fx-background-color: #FFF;
-    -fx-padding: 20;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 2);
-    -fx-max-width: 80vw;
+/* --- TÍTULO DO LIVRO --- */
+#title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3d2f23;
 }
 
+/* --- AUTOR E DATA --- */
+#author, #published {
+    -fx-text-fill: #6d5b46;
+    -fx-font-size: 15px;
+}
+
+/* --- DESCRIÇÃO --- */
 #description {
-    -fx-max-width: 70vw;
-    -fx-padding: 15;
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 8, 0, 0, 2);
+    -fx-font-size: 16px;
+    -fx-text-fill: #3a3a3a;
+    -fx-line-spacing: 4px;
+}
+
+/* --- BOTÃO --- */
+#button {
+    -fx-background-color: linear-gradient(to bottom, #2ecc71, #27ae60);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 10, 0, 0, 3);
+}
+
+#button:hover {
+    -fx-background-color: linear-gradient(to bottom, #27ae60, #219150);
+}
+
+#button:pressed {
+    -fx-background-color: #1e7d47;
+}
+
+/* --- SCROLL (caso você coloque um ScrollPane depois) --- */
+.scroll-pane {
+    -fx-background-color: transparent;
 }

@@ -1,0 +1,70 @@
+/* --- FUNDO PRINCIPAL --- */
+#root {
+    -fx-background-color: linear-gradient(to bottom, #faf7f1, #f1ece4);
+    -fx-font-family: "Segoe UI";
+}
+
+/* --- TÍTULO PRINCIPAL --- */
+#mainTitle {
+    -fx-font-size: 42px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #4b3926;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);
+}
+
+/* --- CARTÃO DO LIVRO --- */
+#bookCard {
+    -fx-background-color: #ffffff;
+    -fx-padding: 25;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-border-color: #e2d7c5;
+    -fx-border-width: 1.5;
+
+    /* Sombra suave */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.22), 20, 0, 0, 6);
+}
+
+/* --- TÍTULO DO LIVRO --- */
+#title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3d2f23;
+}
+
+/* --- AUTOR E DATA --- */
+#author, #published {
+    -fx-text-fill: #6d5b46;
+    -fx-font-size: 15px;
+}
+
+/* --- DESCRIÇÃO --- */
+#description {
+    -fx-font-size: 16px;
+    -fx-text-fill: #3a3a3a;
+    -fx-line-spacing: 4px;
+}
+
+/* --- BOTÃO --- */
+#button {
+    -fx-background-color: linear-gradient(to bottom, #2ecc71, #27ae60);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 10, 0, 0, 3);
+}
+
+#button:hover {
+    -fx-background-color: linear-gradient(to bottom, #27ae60, #219150);
+}
+
+#button:pressed {
+    -fx-background-color: #1e7d47;
+}
+
+/* --- SCROLL (caso você coloque um ScrollPane depois) --- */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
